@@ -5,10 +5,10 @@ namespace App\StaticDatas;
 use App\Enum\CurrencyEnum;
 
 class CurrencyExchangeRate {
-    public readonly array $rule;
+    public readonly array $rate;
 
     public function __construct() {
-        $this->rule = [
+        $this->rate = [
             CurrencyEnum::TWD->value => [
                 CurrencyEnum::TWD->value => 1,
                 CurrencyEnum::JPY->value => 3.669,

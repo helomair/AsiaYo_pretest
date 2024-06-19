@@ -25,22 +25,7 @@ class CurrencyExchangeRequest extends FormRequest
         return [
             'source' => 'string|required',
             'target' => 'string|required',
-            'amount' => [
-                'required',
-                'string',
-                function (string $attribute, mixed $value, Closure $fail) {
-                    $checkingRegex = "/(\d)+([\.](\d)+)*/";
-                    if ( strpos($value, ',') !== false ) {
-                        $checkingRegex = "/(\d){1,3}([\,](\d){1,3})*([\.](\d)+)*/";
-                    }
-
-                    $matches = [];
-                    preg_match($checkingRegex, $value, $matches);
-
-                    if (empty($matches) || (strlen($matches[0]) !== strlen($value)))
-                        $fail("Amount not valid");
-                }
-            ]
+            'amount' => 'string|required',
         ];
     }
 }

@@ -13,12 +13,15 @@ class CurrencyController extends Controller
     ) {}
 
     public function exchange(CurrencyExchangeRequest $request) {
-        $result = $this->exchangeService->exchange(
+        $exchangeResult = $this->exchangeService->exchange(
             $request->source,
             $request->target,
             $request->amount
         );
 
-        print_r($result);
+        if ( is_string($exchangeResult) )
+            return ['msg' => $exchangeResult, 'amount' => null];
+
+        return ['msg' => 'success', 'amount' => number_format($exchangeResult, 2)];
     }
 }
