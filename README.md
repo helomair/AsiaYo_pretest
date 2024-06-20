@@ -25,3 +25,12 @@ response: {
     "amount": "125,577.12"
 }
 ```
+
+## Tests
+
+```bash
+docker exec -it asiayo_pretest bash
+
+# In container
+php artisan test
+```
